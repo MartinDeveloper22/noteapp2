@@ -3,6 +3,7 @@ Thanks for checking out this aaplication
 
 ## Installation
 **----To run this repo locally----**
+
 Feel free to clone the repo.
 All you need is to install `Docker` and then run the command `docker up` in your `Visual Studio Code`.
 
