@@ -1,0 +1,42 @@
+{% extends "note_register/base.html" %}
+
+{% block content %}
+
+<form class="d-flex" method="post" action="{% url 'searchbyid' %}">
+  {% csrf_token %}
+  <input type="search" class="form-control me-2" placeholder="Search notes .." aria-label="Search" name="id">
+  <button class="btn-outline-success" type="submit">search</button>
+</form>
+<script></script>
+  <table class="table table borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>title</td>
+            <td>Text</td>
+            <td>Author</td>
+        </tr>
+    </thead>
+    <tbody>
+      {% if note %}
+      <tr>
+       
+          <td>{{note.title}}</td>
+          <td>{{note.txt}}</td>
+          <td>{{note.authorname}}</td>
+          <td>
+              <form action="{% url 'del' note.id %}" method="post" class="d-inline">
+                  {% csrf_token %}
+                  <button class="submit btn"><i class="far fa-trach-alt fa-lg text-danger float-right">delete</i></button>
+              </form>
+          </td>
+      </tr>
+      {% endif %}
+    
+    </tbody>
+</table>
+<div class="col-md-4">
+  <a href="{% url 'insert' %}" class="btn btn-secondary btn-block btn-lg">
+      <i class="fas fa-stream">back </i>
+  </a>    
+</div>
+{% endblock content %}
