@@ -2,6 +2,7 @@ from django.shortcuts import render , redirect
 
 from .forms import Noteform , Authorform
 from .models import Note
+from django.core.exceptions import ObjectDoesNotExist 
 
 # Create your views here.
 
@@ -27,9 +28,12 @@ def note_del(request,id):
 
 def note_search(request):
   if request.method=="POST" :
-    id  =request.POST['id'] 
-    context = {'note' : Note.objects.get(pk=id) }
-    return render(request,"note_register/search.html",context)
+    try :
+     id  =request.POST['id'] 
+     context = {'note' : Note.objects.get(pk=id) } 
+     return render(request,"note_register/search.html",context)    
+    except  ObjectDoesNotExist : 
+       return render(request,"note_register/search.html")   
   else :
      return render(request,"note_register/search.html")
       
