@@ -7,7 +7,7 @@ Feel free to clone the repo.
 All you need is to install `Docker` and then run the command `docker up` in your `Visual Studio Code`.
 
 ## Desription
-It's an application to create, read, retrievr and delete notes.
+It's an application to create, read and delete notes.
 Find a note by its `ID`.
 List all notes.
 
